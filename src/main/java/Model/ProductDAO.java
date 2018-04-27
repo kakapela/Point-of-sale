@@ -25,6 +25,7 @@ public class ProductDAO {
             Double price = results.getDouble("price");
             product = new Product(barcode, name, price);
         }
+
         results.close();
         selectStatement.close();
         return product;
