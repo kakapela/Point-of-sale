@@ -4,6 +4,7 @@ import model.devices.output.DisplayState;
 import model.dao.DAOFactory;
 import model.dao.Database;
 import model.dao.ProductDAO;
+import model.product.ListOfProducts;
 import model.product.Product;
 import model.product.ProductStates;
 
@@ -21,6 +22,8 @@ public class InputDevice {
 
         product = productDAO.getProduct(barcode);
         if(product == null) DisplayState.getInstance().setState(ProductStates.PRODUCT_NOT_FOUND);
+        else
+        ListOfProducts.getInstance().add(product);
     }
 
     public static Product getCurrentProduct() {

@@ -28,7 +28,7 @@
             <Font size="35.0" />
          </font>
       </Label>
-      <TextArea fx:id="lcdDisplayOutput" editable="false" layoutX="92.0" layoutY="221.0" prefHeight="71.0" prefWidth="416.0" styleClass="text-area" stylesheets="@../styles/style.css">
+      <TextArea fx:id="lcdDisplayOutput" editable="false" layoutX="92.0" layoutY="221.0" prefHeight="81.0" prefWidth="416.0" styleClass="text-area" stylesheets="@../styles/style.css">
          <font>
             <Font size="21.0" />
          </font>

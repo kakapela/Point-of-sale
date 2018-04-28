@@ -4,7 +4,7 @@ import model.devices.input.InputDevice;
 import model.product.Product;
 import model.product.ProductStates;
 
-public class LcdDisplay {
+public class LCDDisplay {
 
     private ProductStates state;
 
@@ -18,7 +18,7 @@ public class LcdDisplay {
         switch (state){
             case PRODUCT_FOUND:
                 Product product = InputDevice.getCurrentProduct();
-                message="PRODUCT: " + product.getName() + " PRICE: " +String.valueOf(product.getPrice());
+                message="Product: " + product.getName() +"\n"+ " Price: " +String.valueOf(product.getPrice());
                 break;
             case INVALID_BARCODE: message="INVALID BARCODE";
                     break;

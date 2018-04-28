@@ -4,6 +4,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.control.TextArea;
 import model.devices.output.DisplayState;
+import model.devices.output.Printer;
 import model.product.ProductStates;
 import model.devices.input.InputDevice;
 import com.jfoenix.controls.JFXTextField;
@@ -16,7 +17,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Window;
-import model.devices.output.LcdDisplay;
+import model.devices.output.LCDDisplay;
 
 import java.net.URL;
 import java.sql.SQLException;
@@ -41,11 +42,12 @@ public class LCDDisplayController implements Initializable {
         try {
             InputDevice.readBarcode(input.getText());
             if(input.getText().isEmpty()) DisplayState.getInstance().setState(ProductStates.INVALID_BARCODE);
-            LcdDisplay lcdDisplay = new LcdDisplay();
+            LCDDisplay lcdDisplay = new LCDDisplay();
 
             lcdDisplayOutput.setText(lcdDisplay.showMessage());
-
-
+            Printer printer = new Printer();
+            System.out.println(printer.printProductList());
+            System.out.println(printer.printTotalSum());
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (SQLException e) {
