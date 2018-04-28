@@ -1,4 +1,4 @@
-package Model;
+package model.dao;
 
 //Static factory design pattern for creating new Products
 public class DAOFactory {

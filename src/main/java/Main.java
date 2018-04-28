@@ -1,4 +1,3 @@
-import Model.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -6,16 +5,12 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-import java.sql.SQLException;
-import java.util.InputMismatchException;
-import java.util.Scanner;
-
 public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
 
-        Parent root = FXMLLoader.load(getClass().getResource("/View/InputDeviceView.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/view/layouts/InputDeviceView.fxml"));
 
 
         primaryStage.setTitle("Barcode Scanner");

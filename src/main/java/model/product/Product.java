@@ -1,4 +1,4 @@
-package Model;
+package model.product;
 
 public class Product {
     private int barcode;

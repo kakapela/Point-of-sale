@@ -1,7 +1,13 @@
-package Model;
+package model.devices.input;
+
+import model.devices.output.DisplayState;
+import model.dao.DAOFactory;
+import model.dao.Database;
+import model.dao.ProductDAO;
+import model.product.Product;
+import model.product.ProductStates;
 
 import java.sql.SQLException;
-import java.util.Scanner;
 
 public class InputDevice {
 
@@ -14,10 +20,10 @@ public class InputDevice {
         ProductDAO productDAO = DAOFactory.getProductDAO();
 
         product = productDAO.getProduct(barcode);
-        if (product == null) displayState.setState("PRODUCT NOT FOUND");
+        if(product == null) DisplayState.getInstance().setState(ProductStates.PRODUCT_NOT_FOUND);
     }
 
-    public static Product getProduct() {
+    public static Product getCurrentProduct() {
         return product;
     }
 
