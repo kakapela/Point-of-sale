@@ -14,7 +14,7 @@ public class InputDevice {
 
     private static Product product;
 
-    public static void readBarcode(String barcodeInput) throws ClassNotFoundException, SQLException {
+    public static void scanBarcode(String barcodeInput) throws ClassNotFoundException, SQLException {
         Database.getInstance().connect();
         DisplayState displayState = DisplayState.getInstance();
         int barcode = displayState.validate(barcodeInput);

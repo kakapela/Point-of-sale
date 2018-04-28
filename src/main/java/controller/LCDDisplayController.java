@@ -2,7 +2,11 @@ package controller;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import model.devices.output.DisplayState;
 import model.devices.output.Printer;
 import model.product.ProductStates;
@@ -19,35 +23,48 @@ import javafx.stage.Modality;
 import javafx.stage.Window;
 import model.devices.output.LCDDisplay;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class LCDDisplayController implements Initializable {
     @FXML
     private JFXTextField input;
     @FXML
     private TextArea lcdDisplayOutput;
+    private String barcode;
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        textLimiter(input,8);
+        textLimiter(input, 8);
 
     }
 
 
     @FXML
-   public void submit(MouseEvent event) {
+    public void submit(MouseEvent event) {
         try {
-            InputDevice.readBarcode(input.getText());
-            if(input.getText().isEmpty()) DisplayState.getInstance().setState(ProductStates.INVALID_BARCODE);
+            barcode = input.getText();
+            InputDevice.scanBarcode(barcode);
             LCDDisplay lcdDisplay = new LCDDisplay();
 
-            lcdDisplayOutput.setText(lcdDisplay.showMessage());
-            Printer printer = new Printer();
-            System.out.println(printer.printProductList());
-            System.out.println(printer.printTotalSum());
+
+            if (barcode.isEmpty()) {
+                DisplayState.getInstance().setState(ProductStates.INVALID_BARCODE);
+                lcdDisplayOutput.setText(lcdDisplay.showMessage());
+            }
+            else if (barcode.toLowerCase().matches("exit")) {
+               createNewScene("/view/layouts/PrinterView.fxml");
+            } else {
+                lcdDisplayOutput.setText(lcdDisplay.showMessage());
+                Printer printer = new Printer();
+                System.out.println(printer.printProductList());
+                System.out.println(printer.printTotalSum());
+            }
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (SQLException e) {
@@ -82,5 +99,21 @@ public class LCDDisplayController implements Initializable {
                 }
             }
         });
+    }
+
+    public void createNewScene(String view){
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource(view));
+            Scene scene = new Scene(fxmlLoader.load());
+            Stage stage = new Stage();
+            stage.setTitle("Product List");
+            stage.setScene(scene);
+            stage.initStyle(StageStyle.UNDECORATED);
+            stage.show();
+        } catch (IOException e) {
+            Logger logger = Logger.getLogger(getClass().getName());
+            logger.log(Level.SEVERE, "Failed to create new Window.", e);
+        }
     }
 }

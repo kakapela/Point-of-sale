@@ -22,7 +22,8 @@ public class LCDDisplay {
                 break;
             case INVALID_BARCODE: message="INVALID BARCODE";
                     break;
-            case PRODUCT_NOT_FOUND:message="PRODUCT NOT FOUND";break;
+            case PRODUCT_NOT_FOUND:message="PRODUCT NOT FOUND";
+            break;
         }
         return  message;
 
