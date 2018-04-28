@@ -1,0 +1,35 @@
+.background {
+
+    -fx-background-image: url("../images/background.jpg");
+    -fx-background-repeat: stretch;
+    -fx-background-size: 600 400;
+    -fx-background-position: center center;
+}
+
+.submitButton {
+    -fx-background-color: red;
+    -fx-text-fill: white;
+    -fx-fill: white;
+}
+
+.submitButton:hover {
+    -fx-background-color: blue;
+    -fx-text-fill: white;
+    -fx-fill: white;
+
+}
+.exitButton:hover {
+    -fx-text-fill: red;
+    -fx-fill: red;
+}
+.input {
+    -fx-text-fill: white;
+    -fx-fill: white;
+    -fx-prompt-text-fill: white;
+}
+.text-area {
+    -fx-text-alignment: center;
+}
+.text-area *.text {
+    -fx-text-alignment: center;
+}
