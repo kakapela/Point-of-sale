@@ -47,7 +47,7 @@ public class DisplayStateTest {
         message = lcdDisplay.showMessage();
 
         actualMessage="INVALID BARCODE";
-        assertEquals("This message should show product not found info",actualMessage,message);
+        assertEquals("This message should show invalid barcode info",actualMessage,message);
     }
 
 

@@ -37,13 +37,10 @@ public class LCDDisplayController implements Initializable {
     private TextArea lcdDisplayOutput;
     private String barcode;
 
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         textLimiter(input, 8);
-
     }
-
 
     @FXML
     public void submit(MouseEvent event) {
@@ -52,13 +49,11 @@ public class LCDDisplayController implements Initializable {
             InputDevice.scanBarcode(barcode);
             LCDDisplay lcdDisplay = new LCDDisplay();
 
-
             if (barcode.isEmpty()) {
                 DisplayState.getInstance().setState(ProductStates.INVALID_BARCODE);
                 lcdDisplayOutput.setText(lcdDisplay.showMessage());
-            }
-            else if (barcode.toLowerCase().matches("exit")) {
-               createNewScene("/view/layouts/PrinterView.fxml");
+            } else if (barcode.toLowerCase().matches("exit")) {
+                createNewScene("/view/layouts/PrinterView.fxml");
             } else {
                 lcdDisplayOutput.setText(lcdDisplay.showMessage());
                 Printer printer = new Printer();
@@ -71,7 +66,6 @@ public class LCDDisplayController implements Initializable {
             e.printStackTrace();
         }
     }
-
 
     public void exitProgram(MouseEvent event) {
         Alert exitAlert = new Alert(Alert.AlertType.CONFIRMATION, "Confirm", ButtonType.OK, ButtonType.CANCEL);
@@ -101,7 +95,7 @@ public class LCDDisplayController implements Initializable {
         });
     }
 
-    public void createNewScene(String view){
+    public void createNewScene(String view) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource(view));

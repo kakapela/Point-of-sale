@@ -21,9 +21,9 @@ public class InputDevice {
         ProductDaoImpl productDAO = DAOFactory.getProductDAO();
 
         product = productDAO.getProduct(barcode);
-        if(product == null) DisplayState.getInstance().setState(ProductStates.PRODUCT_NOT_FOUND);
+        if (product == null) DisplayState.getInstance().setState(ProductStates.PRODUCT_NOT_FOUND);
         else
-        ListOfProducts.getInstance().add(product);
+            ListOfProducts.getInstance().add(product);
     }
 
     public static Product getCurrentProduct() {

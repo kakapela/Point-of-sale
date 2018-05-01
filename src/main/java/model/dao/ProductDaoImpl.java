@@ -7,7 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class ProductDaoImpl implements ProductDAO{
+public class ProductDaoImpl implements ProductDAO {
 
     public Product getProduct(int barcode) throws SQLException {
         Connection conn = Database.getInstance().getConnection();

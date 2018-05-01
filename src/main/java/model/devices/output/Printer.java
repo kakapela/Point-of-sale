@@ -2,6 +2,7 @@ package model.devices.output;
 
 import model.product.ListOfProducts;
 import model.product.Product;
+
 import java.util.List;
 
 public class Printer {
@@ -21,7 +22,7 @@ public class Printer {
             for (Product product : products) {
                 name = product.getName();
                 price = String.valueOf(product.getPrice());
-                productList += "Product:  " + name +"\t\t"+ " Price:  " + price + "\n";
+                productList += "Product:  " + name + "\t\t" + " Price:  " + price + "\n";
             }
             return productList;
         }

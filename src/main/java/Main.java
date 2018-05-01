@@ -8,10 +8,9 @@ import javafx.stage.StageStyle;
 public class Main extends Application {
 
     @Override
-    public void start(Stage primaryStage) throws Exception{
+    public void start(Stage primaryStage) throws Exception {
 
         Parent root = FXMLLoader.load(getClass().getResource("/view/layouts/InputDeviceView.fxml"));
-
 
         primaryStage.setTitle("Barcode Scanner");
         Scene scene = new Scene(root);
@@ -25,8 +24,6 @@ public class Main extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-
-
 
 
 }
